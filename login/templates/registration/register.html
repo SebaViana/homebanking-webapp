@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Banking App</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'register-style.css' %}">
+</head>
+<body>
+
+    <div class="login">
+        <a href="https://www.hsbc.com/"><img class="logo" src={% static 'DATA/HSBC-logo.png' %} alt="HSBC logo"></a>    
+        <h1>Account creation</h1>
+        <form>
+            <label for="username">Username</label>
+            <input type="text" placeholder="Enter a username">
+            <label for="password">Password</label>
+            <input type="password" placeholder="Enter a password">
+            <label for="email">Email</label>
+            <input type="email" placeholder="Enter your email">
+
+            <input type="submit" value="Create account">
+            <a href="../login">Back to log in</a><br>
+<!--            <a href="">I don't have an account</a> -->
+        </form>
+    </div>
+
+</body>
+</html>
