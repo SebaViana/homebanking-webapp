@@ -5,12 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Banking App</title>
-    <link rel="stylesheet" href="main.css">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
 </head>
 <body>
 
     <div class="login">
-        <a href="https://www.hsbc.com/"><img class="logo" src="DATA/HSBC-logo.png" alt="HSBC logo"></a>    
+        <a href="https://www.hsbc.com/"><img class="logo" src={% static 'DATA/HSBC-logo.png' %} alt="HSBC logo"></a>    
         <h1>Account login</h1>
         <form>
             <label for="username">Username</label>
