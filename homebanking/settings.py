@@ -125,6 +125,7 @@ STATIC_URL = '/static/'
 
 #LOGIN_URL = '/homebanking/login'
 #LOGIN_REDIRECT_URL = '/homebanking/bank'
+LOGOUT_REDIRECT_URL = "/homebanking/" 
 
 STATICFILES_DIRS = [
    os.path.join(BASE_DIR, 'login/static/')

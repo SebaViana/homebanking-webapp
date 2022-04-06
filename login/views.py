@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
 
 def hello(request):
 
@@ -13,3 +14,7 @@ def hella(request):
 @login_required
 def hellobank(request):
     return render(request, 'bank.html')
+
+def closeSession(request):
+    logout(request)
+    return redirect('login/')
