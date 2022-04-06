@@ -123,6 +123,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATIC_URL = '/static/'
 
+#LOGIN_URL = '/homebanking/login'
+#LOGIN_REDIRECT_URL = '/homebanking/bank'
+
 STATICFILES_DIRS = [
    os.path.join(BASE_DIR, 'login/static/')
 ]
