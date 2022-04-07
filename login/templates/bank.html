@@ -4,10 +4,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Online Banking | Home</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'bank-style.css' %}">
 </head>
+<header>
+    <div class="header">
+    <img class="logo" src={% static 'DATA/HSBC-logo.png' %} alt="HSBC logo">    
+    <h1>HSBC</h1>
+    <a href={% url 'logout' %}><img class="logo-logout" src={% static 'DATA/logout.png' %} alt="HSBC logo"></a>
+    </div>
+</header>
 <body>
-    <h1>BANCO</h1>
-    <a href={% url 'logout' %}>Log out</a>
+    <div>
+    <p>Welcome, {{ user.get_short_name }}. Thanks for logging in.</p>
+    </div>
 </body>
 </html>
