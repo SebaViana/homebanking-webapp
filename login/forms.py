@@ -7,6 +7,12 @@ class RegisterForm(UserCreationForm):
     first_name = forms.CharField(max_length=50)
     last_name = forms.CharField(max_length=50)
 
+    def __init__(self, *args, **kwargs):
+            super(RegisterForm, self).__init__(*args, **kwargs)
+
+            for fieldname in ['username', 'password1', 'password2']:
+                self.fields[fieldname].help_text = None
+
     class Meta:
         model = User
         fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2')
