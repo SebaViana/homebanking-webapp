@@ -8,10 +8,17 @@ class RegisterForm(UserCreationForm):
     last_name = forms.CharField(max_length=50)
 
     def __init__(self, *args, **kwargs):
-            super(RegisterForm, self).__init__(*args, **kwargs)
+        super(RegisterForm, self).__init__(*args, **kwargs)
 
-            for fieldname in ['username', 'password1', 'password2']:
-                self.fields[fieldname].help_text = None
+        self.fields['username'].widget.attrs['placeholder'] = 'Enter a username'
+        self.fields['first_name'].widget.attrs['placeholder'] = 'Enter your first name'
+        self.fields['last_name'].widget.attrs['placeholder'] = 'Enter your last name'
+        self.fields['email'].widget.attrs['placeholder'] = 'Enter your email'
+        self.fields['password1'].widget.attrs['placeholder'] = 'Enter a password'
+        self.fields['password2'].widget.attrs['placeholder'] = 'Re-enter your password'
+
+        for fieldname in ['username', 'password1', 'password2']:
+            self.fields[fieldname].help_text = None
 
     class Meta:
         model = User
