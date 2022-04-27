@@ -5,6 +5,7 @@ from . import views
 urlpatterns = [
     path('login/', views.hello, name='login'),
     path('register/', views.hella, name='register'),
+    path('password-reset/', views.passwordReset, name='password-reset'),
     path('', views.hellobank, name='onlinebanking'),
-    path('', views.closeSession, name='logout')
+    path('', views.closeSession, name='logout'),
 ]

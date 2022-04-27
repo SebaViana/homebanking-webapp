@@ -42,3 +42,6 @@ def closeSession(request):
 
 def redirectHome(request):
     return redirect('onlinebanking')
+
+def passwordReset(request):
+    return render(request, 'registration/password-reset.html')
