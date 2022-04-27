@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.contrib.auth.forms import UserCreationForm
 from .forms import RegisterForm
+from .models import Wallet
 
 def hello(request):
 
@@ -15,6 +16,8 @@ def hella(request):
         form = RegisterForm(request.POST)
         if form.is_valid():
             form.save()
+            
+            
     else:
         form = RegisterForm()
 
@@ -22,7 +25,15 @@ def hella(request):
 
 @login_required
 def hellobank(request):
-    return render(request, 'bank.html')
+    
+    try:
+        user = Wallet.objects.get(user=request.user)
+    except Wallet.DoesNotExist:
+        instance = Wallet(user = request.user, balance = 0)
+        instance.save()
+        user = Wallet.objects.get(user=request.user)
+    
+    return render(request, 'bank.html', {"balance":user.balance})
 
 def closeSession(request):
     logout(request)
