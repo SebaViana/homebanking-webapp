@@ -8,4 +8,5 @@ urlpatterns = [
     path('password-reset/', views.passwordReset, name='password-reset'),
     path('', views.hellobank, name='onlinebanking'),
     path('', views.closeSession, name='logout'),
+    path('change-password/', views.changePassword, name = 'change-password'),
 ]

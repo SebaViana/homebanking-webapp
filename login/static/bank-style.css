@@ -18,6 +18,14 @@ body {margin:0;
     top: 25px;
 }
 
+.logo-config{
+    width: 40px;
+    height: 40px;
+    float: right;
+    right: 30px;
+    top: 25px;
+}
+
 .header {overflow: hidden;
     background-color: #f1f1f1;
     padding: 0px 20px 0px 10px;
