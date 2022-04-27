@@ -8,16 +8,17 @@ from .forms import RegisterForm
 from .models import Wallet
 
 def hello(request):
-
+    if request.user.is_authenticated:
+        return redirect('onlinebanking')
     return render(request, 'registration/login.html')
 
 def hella(request):
+    if request.user.is_authenticated:
+        return redirect('onlinebanking')
     if request.method == "POST":
         form = RegisterForm(request.POST)
         if form.is_valid():
-            form.save()
-            
-            
+            form.save()            
     else:
         form = RegisterForm()
 
