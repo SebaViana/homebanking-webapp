@@ -18,11 +18,13 @@ from django.urls import path, include
 from django.views.generic import RedirectView
 from django.conf import settings
 from django.conf.urls.static import static
+import login.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('homebanking/', include('login.urls')),
-    path('accounts/', include('django.contrib.auth.urls'))
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('', login.views.redirectHome)
 ]
 
 """ urlpatterns += [

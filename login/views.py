@@ -39,3 +39,6 @@ def hellobank(request):
 def closeSession(request):
     logout(request)
     return redirect('login/')
+
+def redirectHome(request):
+    return redirect('onlinebanking')
