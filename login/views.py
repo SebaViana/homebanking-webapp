@@ -25,7 +25,6 @@ def hella(request):
 
 @login_required
 def hellobank(request):
-    
     try:
         user = Wallet.objects.get(user=request.user)
     except Wallet.DoesNotExist:
@@ -54,4 +53,14 @@ def changePassword(request):
             return redirect('onlinebanking')
     else:
         form = PasswordChangeForm(request.user)
-    return render(request, 'registration/change-password.html', {'form': form})
+
+    context= {
+    'form': form,
+    'date_joined': request.user.date_joined,
+    'last_login': request.user.last_login,
+    'first_name': request.user.first_name,
+    'last_name': request.user.last_name,
+    'accountId': Wallet.objects.get(user=request.user).accountId
+    }
+
+    return render(request, 'registration/change-password.html', context)
