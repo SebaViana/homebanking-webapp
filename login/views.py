@@ -28,7 +28,7 @@ def hellobank(request):
     try:
         user = Wallet.objects.get(user=request.user)
     except Wallet.DoesNotExist:
-        instance = Wallet(user = request.user, balance = 0)
+        instance = Wallet(user = request.user)
         instance.save()
         user = Wallet.objects.get(user=request.user)
     
