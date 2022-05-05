@@ -46,16 +46,16 @@ def passwordReset(request):
 
 def changePassword(request):
     if request.method == 'POST':
-        form = PasswordChangeForm(request.user, request.POST)
-        if form.is_valid():
-            user = form.save()
+        PasswordChange_form = PasswordChangeForm(request.user, request.POST)
+        if PasswordChange_form.is_valid():
+            user = PasswordChange_form.save()
             update_session_auth_hash(request, user)
             return redirect('onlinebanking')
     else:
-        form = PasswordChangeForm(request.user)
+        PasswordChange_form = PasswordChangeForm(request.user)
 
     context= {
-    'form': form,
+    'PasswordChange_form': PasswordChange_form,
     'date_joined': request.user.date_joined,
     'last_login': request.user.last_login,
     'first_name': request.user.first_name,
