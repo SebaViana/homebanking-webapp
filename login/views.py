@@ -64,3 +64,7 @@ def changePassword(request):
     }
 
     return render(request, 'registration/change-password.html', context)
+
+def transfer(request):
+    user = Wallet.objects.get(user=request.user)
+    return render(request, 'transfer.html', {"balance":user.balance})

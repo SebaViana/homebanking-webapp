@@ -7,26 +7,25 @@
     {% load static %}
     <link rel="icon" href="{% static 'DATA/HSBC-logo.png' %}">
     <title>Online Banking | Home</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'bank-style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'transfer-style.css' %}">
 </head>
 <header>
     <div class="header">
     <img class="logo" src={% static 'DATA/HSBC-logo.png' %} alt="HSBC logo">    
     <h1>HSBC</h1>
-    <a href={% url 'change-password' %}><img class="logo-config" src={% static 'DATA/config.png' %} alt="config"></a>
+    <a href={% url 'onlinebanking' %}><img class="logo-return" src={% static 'DATA/logo-return.png' %} alt="config"></a>
     <a href={% url 'logout' %}><img class="logo-logout" src={% static 'DATA/logout.png' %} alt="HSBC logo"></a>
     </div>
 </header>
 <body>
     <div class="account">
-        <p>Welcome, {{ user.get_short_name }}. Thanks for logging in.</p>
-        <p>Su dinero disponible es : {{balance}}</p>
+        <p>Dinero disponible: {{balance}}</p>
+        <p>Ingrese el ID de la cuenta destino</p>
+        <input type="number"><br>
+        <p>Ingrese el monto a transferir</p>
+        <input type="number"><br>
+        <button>Confirm</button>
+        <form></form>
     </div>
-    <a href={% url 'transfer' %}>
-    <div class="button">
-        <img class="button" src={% static 'DATA/icon-transfer.png' %} alt="transfer money">
-        <p class="button">Transfer</p>
-    </div>
-    </a>
 </body>
 </html>
