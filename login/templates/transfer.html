@@ -18,14 +18,17 @@
     </div>
 </header>
 <body>
+
     <div class="account">
         <p>Dinero disponible: {{balance}}</p>
+        <form method="POST">
+        {% csrf_token %}
         <p>Ingrese el ID de la cuenta destino</p>
-        <input type="number"><br>
+        <input type="number" name="to_account"><br>
         <p>Ingrese el monto a transferir</p>
-        <input type="number"><br>
-        <button>Confirm</button>
-        <form></form>
+        <input type="number" name="amount"><br>
+        <button type="submit">Confirm</button>
+        </form>
     </div>
 </body>
 </html>
