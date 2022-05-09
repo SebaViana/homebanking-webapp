@@ -2,6 +2,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
 
+from login.models import Transaction
+
 class RegisterForm(UserCreationForm):
     email = forms.EmailField()
     first_name = forms.CharField(max_length=50)
@@ -23,3 +25,11 @@ class RegisterForm(UserCreationForm):
     class Meta:
         model = User
         fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2')
+
+class TransactionForm(forms.ModelForm):
+    to_account = forms.CharField(max_length=6)
+    amount = forms.DecimalField(max_digits=5)
+    
+    class Meta:
+        model=Transaction
+        fields = '__all__'
