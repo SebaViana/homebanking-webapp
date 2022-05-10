@@ -82,3 +82,29 @@ margin-bottom: 20px;
 .login a:hover {
     color: white
 }
+
+/*left images*/
+
+.left {width: 360px;
+    height: 520px;
+    background: rgba(255, 255, 255, 0.9);
+    color: black;
+    top: 50%;
+    left: 30%;
+    position:absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 0px 10px;
+
+}
+
+.left .showcase {width: 340px;
+    height: 250px;
+/*    position: absolute;*/
+    top: -50px;
+    left: calc(50% - 50px);
+}
+
+.left .arrow {width: 30px;
+    height: 30px;
+}
