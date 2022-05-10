@@ -14,3 +14,7 @@ function wallet_NotExist() {
 function notEnoughMoney() {
   alert("You don't have enoguh money to transfer")
 }
+
+function trasnactionSuccessful() {
+  alert("the transaction was successful")
+}

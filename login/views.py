@@ -94,7 +94,7 @@ def transfer(request):
                     receiver = Wallet.objects.get(accountId=request.POST.get('to_account'))
                     receiver.balance.amount += int(request.POST.get('amount'))
                     receiver.save()
-                    return redirect ('transfer')
+                    alert = 'trasnactionSuccessful()'
                 except Wallet.DoesNotExist:
                     form = TransactionForm
                     alert = 'wallet_NotExist()'
