@@ -22,16 +22,28 @@
         <p>Welcome, {{ user.get_short_name }}. Thanks for logging in.</p>
         <p>Su dinero disponible es : {{balance}}</p>
     </div>
-    <a href={% url 'transfer' %}>
     <div class="button">
+    <a href={% url 'transfer' %}>
         <img class="button" src={% static 'DATA/icon-transfer.png' %} alt="transfer money">
         <p class="button">Transfer</p>
-    </div>
     </a>
-    <a href="{% url 'customer-support' %}">
+    </div>
     <div class="button">
+    <a href="{% url 'customer-support' %}">
         <img class="button" src={% static 'DATA/icon-support.png' %} alt="customer service">
         <p class="button">Customer service</p>
+    </a>
+    </div>
+    <div class="button">
+    <a href="">
+        <img class="button" src={% static 'DATA/icon-benefits.png' %} alt="benefits">
+        <p class="button">Benefits</p>
+    </a>
+    </div>
+    <div class="button">
+    <a href="">
+        <img class="button" src={% static 'DATA/icon-faq.png' %} alt="FAQ">
+        <p class="button">Frenquets Asked Questions</p>
     </a>
     </div>
 </body>
