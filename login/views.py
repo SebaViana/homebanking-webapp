@@ -9,6 +9,10 @@ from .models import Wallet
 from djmoney.models.fields import MoneyField, Money
 import logging
 
+from django.urls import reverse_lazy
+from django.contrib.auth.views import PasswordResetView
+from django.contrib.messages.views import SuccessMessageMixin
+
 logging.basicConfig(level=logging.NOTSET)
 
 def hello(request):
@@ -97,3 +101,13 @@ def transfer(request):
     "balance":user.balance
     }
     return render(request, "transfer.html", context)
+
+class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
+    template_name = 'registration/password-reset.html'
+    email_template_name = 'password_reset/password_reset_email.html'
+    subject_template_name = 'password_reset/password_reset_subject'
+    success_message = "We've emailed you instructions for setting your password, " \
+                    "if an account exists with the email you entered. You should receive them shortly." \
+                    " If you don't receive an email, " \
+                    "please make sure you've entered the address you registered with, and check your spam folder."
+    success_url = reverse_lazy('onlinebanking')
