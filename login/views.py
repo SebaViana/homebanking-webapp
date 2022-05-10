@@ -79,6 +79,7 @@ def changePassword(request):
     return render(request, 'transfer.html', {"balance":user.balance}) """
 
 def transfer(request):
+    alert = None
     user = Wallet.objects.get(user=request.user)
     if request.method == "POST":
         form = TransactionForm(request.POST)
@@ -95,13 +96,18 @@ def transfer(request):
                     receiver.save()
                     return redirect ('transfer')
                 except Wallet.DoesNotExist:
-                    return redirect('transfer')
+                    form = TransactionForm
+                    alert = 'wallet_NotExist()'
+            else:
+                alert = 'notEnoughMoney()'
+                    
 
     else:
         form = TransactionForm
     context= {
     'TransactionForm_form': form,
-    "balance":user.balance
+    "balance":user.balance,
+    'alert': alert
     }
     return render(request, "transfer.html", context)
 

@@ -19,14 +19,17 @@
 </header>
 <body>
 
+    <script src="{% static 'app.js' %}"></script>
+    <script>window.onload = function() { {{ alert }} };</script>
+
     <div class="account">
         <p>Dinero disponible: {{balance}}</p>
         <form method="POST">
         {% csrf_token %}
         <p>Ingrese el ID de la cuenta destino</p>
-        <input type="number" name="to_account"><br>
+        <input type="number" name="to_account" required><br>
         <p>Ingrese el monto a transferir</p>
-        <input type="number" name="amount"><br>
+        <input type="number" name="amount" required><br>
         <button type="submit">Confirm</button>
         </form>
     </div>
