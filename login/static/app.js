@@ -7,6 +7,15 @@ function myFunction() {
   }
 }
 
+function viewPassword1() {
+  var x = document.getElementById("password1");
+  if (x.type === "password") {
+    x.type = 'text';
+  } else {
+    x.type = 'password'
+  }
+}
+
 function wallet_NotExist() {
   alert("Account ID does not exist");
 }

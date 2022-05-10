@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'index-style.css' %}">
 </head>
 <body>
-
+    <script src="{% static 'app.js' %}"></script>
     <div class="login">
         <a href="https://www.hsbc.com/"><img class="logo" src={% static 'DATA/HSBC-logo.png' %} alt="HSBC logo"></a>    
         <h1>Account login</h1>
@@ -19,8 +19,8 @@
             <label for="username">Username</label>
             <input type="text" name="username" placeholder="Enter username">
             <label for="password">Password</label>
-            <input type="password" name="password" placeholder="Enter password">
-
+            <input id="password1" type="password" name="password" placeholder="Enter password">
+            <img class='toggle' src={% static 'DATA/eye-open.png' %} width=25 onclick="viewPassword1()"/>
             <input type="submit" value="Log In">
             <a href={% url 'password-reset' %}>Forgot your username or password?</a><br>
             <a href={% url 'register' %}>I don't have an account</a>
