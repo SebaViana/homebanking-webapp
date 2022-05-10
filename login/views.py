@@ -85,14 +85,17 @@ def transfer(request):
         if form.is_valid():
             sender = Wallet.objects.get(user=request.user)
             if sender.balance.amount > Money(request.POST.get('amount')).amount:
-                trans = form.save()
-                trans.account_owner = request.user
-                sender.balance.amount -= int(request.POST.get('amount'))
-                sender.save()
-                receiver = Wallet.objects.get(accountId=request.POST.get('to_account'))
-                receiver.balance.amount += int(request.POST.get('amount'))
-                receiver.save()
-                return redirect ('transfer')
+                try:
+                    trans = form.save()
+                    trans.account_owner = request.user
+                    sender.balance.amount -= int(request.POST.get('amount'))
+                    sender.save()
+                    receiver = Wallet.objects.get(accountId=request.POST.get('to_account'))
+                    receiver.balance.amount += int(request.POST.get('amount'))
+                    receiver.save()
+                    return redirect ('transfer')
+                except Wallet.DoesNotExist:
+                    return redirect('transfer')
 
     else:
         form = TransactionForm
