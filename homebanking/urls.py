@@ -19,12 +19,22 @@ from django.views.generic import RedirectView
 from django.conf import settings
 from django.conf.urls.static import static
 import login.views
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('homebanking/', include('login.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('', login.views.redirectHome)
+    path('', login.views.redirectHome),
+    path(
+    'reset/<uidb64>/<token>/',
+    auth_views.PasswordResetConfirmView.as_view(
+        template_name='registration/password-reset-confirm.html'
+    ),
+    name='password_reset_confirm'),
+    path('reset/done/',
+    auth_views.PasswordResetCompleteView.as_view(template_name='registration/password-reset-complete.html'),
+    name='password_reset_complete'),
 ]
 
 """ urlpatterns += [
