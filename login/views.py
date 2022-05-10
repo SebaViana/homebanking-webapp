@@ -50,9 +50,10 @@ def closeSession(request):
 def redirectHome(request):
     return redirect('onlinebanking')
 
-def passwordReset(request):
+# def passwordReset(request):
     return render(request, 'registration/password-reset.html')
 
+@login_required
 def changePassword(request):
     if request.method == 'POST':
         PasswordChange_form = PasswordChangeForm(request.user, request.POST)
@@ -78,6 +79,7 @@ def changePassword(request):
     user = Wallet.objects.get(user=request.user)
     return render(request, 'transfer.html', {"balance":user.balance}) """
 
+@login_required
 def transfer(request):
     alert = None
     user = Wallet.objects.get(user=request.user)
@@ -121,5 +123,6 @@ class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
                     "please make sure you've entered the address you registered with, and check your spam folder."
     success_url = reverse_lazy('onlinebanking')
 
+@login_required
 def customerSupport(request):
     return render(request, 'customer-support.html')
