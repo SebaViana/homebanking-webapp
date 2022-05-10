@@ -120,3 +120,6 @@ class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
                     " If you don't receive an email, " \
                     "please make sure you've entered the address you registered with, and check your spam folder."
     success_url = reverse_lazy('onlinebanking')
+
+def customerSupport(request):
+    return render(request, 'customer-support.html')
