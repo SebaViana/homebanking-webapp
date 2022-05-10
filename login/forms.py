@@ -22,6 +22,10 @@ class RegisterForm(UserCreationForm):
         for fieldname in ['username', 'password1', 'password2']:
             self.fields[fieldname].help_text = None
 
+    def clean_email(self):
+        if User.objects.filter(email=self.cleaned_data['email']).exists():
+            raise forms.ValidationError("The given email is already registered")
+
     class Meta:
         model = User
         fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2')
@@ -31,5 +35,5 @@ class TransactionForm(forms.ModelForm):
     amount = forms.DecimalField(max_digits=5)
     
     class Meta:
-        model=Transaction
+        model = Transaction
         fields = '__all__'
